@@ -23,6 +23,7 @@ def update(window, delta_time):
     for gold_pile in window.goldList:
         if gold_pile.collides_with_sprite(window.player):
             window.score +=10
+            window.ching_sound.play()
             print (f"Your score is {window.score}")
             gold_to_remove=gold_pile
             break
@@ -58,6 +59,8 @@ def setup_window(graphicsWindow):
     graphicsWindow.left_pressed = False
     graphicsWindow.right_pressed = False
     graphicsWindow.score= 0
+    ching_sound = arcade.Sound("Cash_register noise.ogg")
+    graphicsWindow.ching_sound=ching_sound
 
 
 def key_pressed(game_window, key, modifiers):
